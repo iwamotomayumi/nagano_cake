@@ -1,2 +1,13 @@
 <h1>Public::Items#show</h1>
 <p>Find me in app/views/public/items/show.html.erb</p>
+
+
+<%= form_with model: @item do |f| %>
+
+
+
+<%= f.hidden_field :title, :value => "楽しいRuby" %>
+<%= f.select :amount, *[1..10] %>
+<%= f.submit 'カートに入れる'%>
+
+<% end %>
