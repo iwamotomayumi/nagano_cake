@@ -1,6 +1,6 @@
 <div>
   <%= flash[:notice] %>
-<div>
+</div>
 <br>
 <div class="container">
   <div class="row">
@@ -10,10 +10,9 @@
       <br>
     <div class="col-md-8 offset-md-1">
 
-    </div>
      <table class="table table-hover table-inverse">
        <tr>
-         <td><%= image_tag @item.image, size: "300x300" %></td>
+         <td><%= image_tag @item.image, size: "450x250" %></td>
       </tr>
       <tr>
         <td>商品名</td>
@@ -43,8 +42,8 @@
           </td>
       </tr>
     </table>
-        <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success" %>
-
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success" %>
+    </div>
    </div>
   </div>
 </div>

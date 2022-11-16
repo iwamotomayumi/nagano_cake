@@ -1,19 +1,27 @@
-<div class="container">
-  <div class="row">
-    <div class="align-middle">
+<div>
+  <%= flash[:notice] %>
+<div>
 
-      <h1>About</h1>
+<main>
+  <p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <h1 class="px-3 mx-auto display-3"><strong>About</strong></h1>
+    </div>
+    <div class="row">
+      <h4 class="px-3 mx-auto text-center">
+          ながのCAKEは全国発送可能なケーキ屋さんです。<br>
+          お子様からお年寄りの方までお召し上がりいただけるよう、<br>
+          様々なバリエーションをご用意しております。<br>
+          また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
+          ぜひご注文ください。
       <br>
-      <p>
-      ながのCAKEは全国発送可能なケーキ屋さんです。<br>
-      お子様からお年寄りの方までお召し上がりいただけるよう、<br>
-      様々なバリエーションをご用意しております。<br>
-      また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。
-      ぜひご注文ください。
-      </p>
-      <%= image_tag @item.image, size: "300x300" %>
-
-
+      </h4>
+    </div>
+    <div class="row">
+      <div class="px-3 mx-auto">
+         <%= image_tag 'default-image.jpg', size: "600x200" %>
+      </div>
     </div>
   </div>
-</div>
+</main>

@@ -1,2 +1,57 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.border {
+  padding: 10px 30px;
+  margin: 0 20px;
+}
+
+.nav-item {
+  padding: 10px 10px;
+  list-style: none;
+}
+
+.search {
+    display: inline-block;
+    transform: scaleX(-1);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    padding: 5px 5px;
+}
+
+.fas {
+  transform: scaleX(-1);
+}
+
+.card-img-overlay {
+  padding: 0;
+  top: calc(50% - 4.0rem);
+  text-align: left;
+  font-weight: bold;
+}
+
+.item-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-box {
+  width: 200px;
+  height: 250px;
+  margin: 10px;
+}
+
+.item-comment {
+  width: 200px;
+}
+
+
+
+

@@ -6,6 +6,7 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "新規登録しました"
       redirect_to admin_genres_path
     else
+      flash[:notice] = "必要事項を入力して下さい"
       render :index
     end
   end
@@ -26,6 +27,7 @@ class Admin::GenresController < ApplicationController
     flash[:notice] = "変更を保存しました"
     redirect_to admin_genres_path
     else
+      flash[:notice] = "変更内容を入力して下さい"
       render :edit
     end
   end

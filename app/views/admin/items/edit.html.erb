@@ -7,9 +7,9 @@
     <div class="px-3 mr-auto">
        <h4>商品編集</h4>
 
-      <table>
-        <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
 
+        <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+         <table>
           <tr>
           <td>商品画像</td>
           <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -41,8 +41,9 @@
         </tr>
 
         <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
-        <% end %>
+
       </table>
+      <% end %>
     </div>
   </div>
 </div>

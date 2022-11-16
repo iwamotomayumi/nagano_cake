@@ -1,2 +1,39 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div>
+  <%= flash[:notice] %>
+<div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="px-3 mr-auto">
+
+    <h4>注文履歴一覧</h4>
+
+      <br>
+
+     <table class="table table-hover table-inverse">
+      <tr>
+        <th>購入日時</th><th>購入者</th><th>注文個数</th><th>注文ステータス</th>
+      </tr>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.created_at.strftime('%Y/%m/%d/% H%:%M:%S'), admin_orders_path(order.id) %></td>
+          <td><%= order.name %></td>
+          <td><%= @order_detail.amount %></td>
+          <td><% if order.status == 0 %>
+              入金待ち
+              <% elsif %>
+              販売停止中
+              <% else %>
+              販売停止中
+              <% end %>
+          </td>
+         </tr>
+      <% end %>
+      </table>
+
+      <%= paginate @orders %>
+
+   </div>
+  </div>
+
+

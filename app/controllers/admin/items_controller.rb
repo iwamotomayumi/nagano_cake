@@ -17,6 +17,7 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "新規登録しました"
       redirect_to admin_items_path
     else
+      flash[:notice] = "必要事項を入力して下さい"
       render :new
     end
   end
@@ -39,6 +40,7 @@ class Admin::ItemsController < ApplicationController
     flash[:notice] = "変更を保存しました"
     redirect_to admin_items_path
     else
+       flash[:notice] = "変更内容を入力して下さい"
       render :edit
     end
   end
