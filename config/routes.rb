@@ -26,7 +26,7 @@ scope module: :public do
     get 'orders/thanks'
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
-    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :create, :destroy_all]
     resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end

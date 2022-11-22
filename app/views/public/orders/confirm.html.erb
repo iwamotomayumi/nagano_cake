@@ -1,2 +1,43 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<div>
+  <%= flash[:notice] %>
+<div>
+<br>
+<h4>注文情報確認</h4>
+
+    <table class="table table border="1" width="80"">
+      <thead bgcolor="gray">
+        <th>商品名</th><th>単価(税込)</th><th>数量</th><th>小計</th><th></th>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |f| %>
+          <tr>
+            <td><%= image_tag f.item.image, size: "80x40"%>
+                <%= f.item.name %></td>
+            <td><%= f.item.with_tax_price %></td>
+            <td><%= f.amount %></td>
+            <td><%= f.subtotal %></td>
+                <% @total +=  f.subtotal %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <table class="table table border="1" width="30"">
+      <thead bgcolor="gray">
+        <td>合計金額</td>
+      </thead>
+      <tbody>
+        <td><%= @total %></td>
+      </tbody>
+    </table>
+
+  <!-- ユーザーには注文確定ボタンだけ表示します -->
+    <%= form_with model: @order, url: orders_thanks_path, local: true do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :total_price, value: @total %>
+      <%= f.submit "注文を確定する", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>お届け先</p>  <%= @order.address %>
+
