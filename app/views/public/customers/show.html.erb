@@ -1,2 +1,41 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div>
+  <%= flash[:notice] %>
+<div>
+
+<body>
+    <h4 class="my-3 ml-3">マイページ</h4>
+    <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success" %>
+
+    <div class="col-5 ml-3">
+        <table class="table table-bordered">
+                <tr>
+                    <th class="table-success">氏名</th>
+                    <th><%= @customer.last_name %><%= @customer.first_name %></th>
+                </tr>
+                <tr>
+                    <td class="table-success">カナ</td>
+                    <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+                </tr>
+                <tr>
+                    <td class="table-success">郵便番号</td>
+                    <td><%= @customer.postal_code %></td>
+                </tr>
+                <tr>
+                    <td class="table-success">住所</td>
+                    <td><%= @customer.address %></td>
+                </tr>
+                <tr>
+                    <td class="table-success">電話番号</td>
+                    <td><%= @customer.telephone_number %></td>
+                </tr>
+                <tr>
+                    <td class="table-success">メールアドレス</td>
+                    <td><%= @customer.email %></td>
+                </tr>
+        </table>
+    </div>
+    <strong>配送先</strong>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "一覧を見る", addresses_path, class:"btn btn-success" %>
+    <strong>注文履歴</strong>&nbsp;&nbsp;&nbsp;&nbsp<%= link_to "一覧を見る", orders_path, class:"btn btn-success" %>
+<body>
+
+

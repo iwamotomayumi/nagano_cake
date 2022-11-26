@@ -38,8 +38,8 @@
           <!-- customer テーブルに登録されている住所の場合です -->
             &nbsp;&nbsp;&nbsp;&nbsp;
             <span style="font-size:18px ">
-              <%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
-              <%= f.label :address_number_1, "ご自身の住所" %><br>
+              <%= f.radio_button :address_number, 0 %> <!-- address_number と定義して1～3の番号を check に送ります -->
+              <%= f.label :address_number_0, "ご自身の住所" %><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               〒<%= current_customer.postal_code %> <%= current_customer.address %><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,8 +50,8 @@
           <!-- 登録されたaddressから選んでもらう場合です -->
             &nbsp;&nbsp;&nbsp;&nbsp;
             <span style="font-size:18px ">
-              <%= f.radio_button :address_number, 2 %>
-              <%= f.label :address_number_2, "登録済み住所から選択" %><br>
+              <%= f.radio_button :address_number, 1 %>
+              <%= f.label :address_number_1, "登録済み住所から選択" %><br>
                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
               <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
             </span>
@@ -61,8 +61,8 @@
           <!-- 新しい住所を追加する場合です -->
             &nbsp;&nbsp;&nbsp;&nbsp;
             <span style="font-size:18px ">
-              <%= f.radio_button :address_number, 3 %>
-              <%= f.label :address_number_3, "新しいお届け先" %>
+              <%= f.radio_button :address_number, 2 %>
+              <%= f.label :address_number_2, "新しいお届け先" %>
             </span>
             <br>
             <table>
@@ -80,9 +80,9 @@
               </tr>
               <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <span style="font-size:15px "><%= f.label :address_name, "宛名" %></span></td>
+                  <span style="font-size:15px "><%= f.label :name, "宛名" %></span></td>
                  <td>
-                   <span style="font-size:15px "><%= f.text_field :address_name, placeholder: "令和道子"  %></span></td>
+                   <span style="font-size:15px "><%= f.text_field :name, placeholder: "令和道子"  %></span></td>
               </tr>
           </table>
            <!-- 選んでもらったデータを送ります -->

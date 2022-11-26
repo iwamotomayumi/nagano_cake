@@ -1,2 +1,65 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="row" style="width:60%; margin:0 auto;">
+  <h5 style="margin: 0px 0px 20px 80px; background:#dad7d7; padding: 10px 25px;">注文履歴詳細</h5>  <br>
+
+
+	<span class="text pull-right"></span>
+	<strong>注文情報</strong>
+  <table class="table table-bordered ">
+	  <tr>
+	 		<th class="table-success">注文日</th>
+	    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+		</tr>
+		<tr>
+			<th class="table-success">配送先</th>
+			<td>
+				〒<%= @order.postal_code %><br>
+				<%= @order.address %><br>
+				<%= @order.name %>
+			</td>
+		</tr>
+		<tr>
+			<th class="table-success">支払い方法</th>
+			<td><%= @order.payment_method_i18n %></td>
+		</tr>
+		<tr>
+			<th class="table-success">ステータス</th>
+			<td><%= @order.status_i18n %></td>
+		</tr>
+</table>
+
+<strong>請求情報</strong>
+<table class="table table-bordered ">
+	<tbody>
+		<tr>
+			<th class="table-success">商品合計</th>
+			<td><%= @total.to_s(:delimited) %></td>
+                <% @total += @order.shipping_cost %>
+		</tr>
+		<tr>
+			<th class="table-success">配送料</th>
+			<td><%= @order.shipping_cost.to_s(:delimited) %></td>
+		</tr>
+		<tr>
+			<th class="table-success">ご請求額</th>
+			<td><%= @order.total_payment.to_s(:delimited) %></td>
+		</tr>
+	</tbody>
+</table>
+
+<strong>注文内容</strong>
+<table class="table table-bordered">
+		<tr>
+			<th class="table-success">商品</th>
+			<th class="table-success">単価（税込）</th>
+			<th class="table-success">個数</th>
+			<th class="table-success">小計</th>
+
+      <% @order.order_details.each do |order_detail| %>
+				<td><%= order_detail.item.name %></td>
+				<td><%= order_detail.price %></td>
+				<td><%= order_detail.amount %></td>
+				<td><%= order_detail.item.subtotal.to_s(:delimited) %>	</td>
+			  <% end %>
+		</tr>
+</table>
+</div>
