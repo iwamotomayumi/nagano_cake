@@ -30,7 +30,7 @@
 		</tr>
 		<tr>
 			<th>注文ステータス</th>
-			<%= form_with model: Order.new, url: admin_order_path do |f| %>
+			<%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
               <td><%= f.select :status, Order.statuses_i18n.invert %></td>
               <td><%= f.submit '変更', class: "btn btn-primary" %></td>
             <% end %>
@@ -55,7 +55,7 @@
 			<td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
 			<td><%= order_detail.amount %></td>
 			<td><%= order_detail.subtotal %></td>
-			<%= form_with model: OrderDetail.new, url: admin_order_path do |f| %>
+			<%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
               <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %></td>
               <%= f.hidden_field :order_detail_id, :value => order_detail.id %>
               <td><%= f.submit '変更', class: "btn btn-primary" %></td>
