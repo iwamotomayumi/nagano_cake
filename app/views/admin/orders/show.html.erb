@@ -2,6 +2,7 @@
 
 <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文履歴詳細</h4>
 
+	<%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
 	<table class="table table-border">
 		<tr>
 			<th>購入者</th>
@@ -30,13 +31,11 @@
 		</tr>
 		<tr>
 			<th>注文ステータス</th>
-			<%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-              <td><%= f.select :status, Order.statuses_i18n.invert %></td>
-              <td><%= f.submit '変更', class: "btn btn-primary" %></td>
-            <% end %>
+      <td><%= f.select :status, Order.statuses_i18n.invert %></td>
+      <td><%= f.submit '変更', class: "btn btn-primary" %></td>
 		</tr>
-	</table>
-
+		</table>
+	<% end %>
 
 	<table class="table table-bordered">
 		<tr style="background:#dad7d7;">
