@@ -37,7 +37,11 @@
   font-weight: bold;
 }
 
-.item-wrap {
+.item-wrap1 {
+  display: flex;
+}
+
+.item-wrap2 {
   display: flex;
   flex-wrap: wrap;
 }
@@ -51,7 +55,3 @@
 .item-comment {
   width: 200px;
 }
-
-
-
-

@@ -6,7 +6,7 @@
     <p id="notice"></p>
   <div class="container px-5 px-sm-0">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2">
         <table class="table table-bordered border-dark">
           <thead>
             <tr><th scope="col">ジャンル検索</th></tr>
@@ -20,10 +20,10 @@
           </tbody>
         </table>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-10">
         <h4><strong>商品一覧</strong>（全✖️件）</h4>
-        <div class="main-visual col-md-8 offset-md-1">
-           <div class="item-wrap">
+
+           <div class="item-wrap2">
               <% @items.each do |item| %>
               <div class="item-box font-weight-bold">
                 <%= link_to item_path(item.id) do %>
@@ -35,7 +35,8 @@
                 </div>
               </div>
             <% end %>
-
+          <div class= "col-5"></div>
+          <div class="col-sm-6 col-md-4 col-lg-3">
             <%= paginate @items %>
           </div>
         </div>

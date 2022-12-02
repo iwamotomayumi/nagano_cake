@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page])
+    @items = Item.all.page(params[:page]).per(8)
     @genres = Genre.all
   end
 
@@ -9,7 +9,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
- 
+
 
    private
   # ストロングパラメータ

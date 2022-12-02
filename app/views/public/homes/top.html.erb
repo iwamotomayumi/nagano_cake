@@ -2,11 +2,11 @@
   <%= flash[:notice] %>
 </div>
 
-<main>
+
     <p id="notice"></p>
   <div class="container px-5 px-sm-0">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-2">
         <table class="table table-bordered border-dark">
           <thead>
             <tr><th scope="col">ジャンル検索</th></tr>
@@ -21,27 +21,31 @@
         </table>
       </div>
 
-      <div class="main-visual col-md-8 offset-md-1">
-        <div class="card" style="max-width: 400px;">
+      <div class="col-md-10">
+        <div class="card">
           <%= image_tag 'default-image.jpg', size: "700x300" %>
-            <div class="card-img-overlay ">
-              <p class="navbar-white bg-white text-black"><br>
-                ようこそ、ながのCAKEへ！<br>
+            <div class="card-img-overlay">
+              <div class="row">
+              <div class= "col-2"></div>
+              <div class="bg-white text-black center-block col-5"><br>
+                <p>ようこそ、ながのCAKEへ！<br>
                 このサイトは、ケーキ販売のECサイトになります。<br>
                 会員でない方も商品の閲覧はできますが、<br>
                 購入には会員登録が必要となります。<br>
                 <br>
-              </p>
+                </p>
+              </div>
+              </div>
             </div>
         </div>
         <br>
 
-        <div class="col-md-9">
+        <div>
           <h4 class="font-weight-bold">新着商品</h4>
-        <div class="main-visual col-md-8 offset-md-1">
-           <div class="item-wrap">
-              <% @items.each do |item| %>
-              <div class="item-box font-weight-bold">
+
+           <div class="item-wrap1">
+              <% @items.first(4).each do |item| %>
+              <span class="item-box font-weight-bold">
                 <%= link_to item_path(item.id) do %>
                   <%= image_tag item.image , size: "200x100"%>
                 <% end %>
@@ -49,14 +53,18 @@
                   <span class="item-body"><%= item.name %></span><br>
                   <span class="item-title">¥<%= item.price.to_s(:delimited) %></span>
                 </div>
-              </div>
+              </span>
             <% end %>
-
+         </div>
 
         <div class="text-right">
           <%= link_to "全ての商品を見る >", items_path %>
         </div>
-      </div>
+
     </div>
   </div>
-</main>
+  </div>
+  </div>
+
+
+
