@@ -1,41 +1,72 @@
 <div>
   <%= flash[:notice] %>
 <div>
+<br>
+<div class="container">
 
-<body>
-    <h4 class="my-3 ml-3">マイページ</h4>
-    <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success" %>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-2 text-center">
+          <h4 class="bg-warning">マイページ</h4>
+        </div>
+    </div>
 
-    <div class="col-5 ml-3">
+    <div class="row">
+        <div class="col-5 ml-4">
+            <table>
+            <tr>
+            <td height="60"><strong>登録情報&emsp;</strong></td>
+            <td><%= link_to "編集する", customers_information_edit_path, class:"btn btn-success" %></td>
+            </tr>
+            </table>
+        </div>
+     </div>
+
+    <div class="row">
+    <div class="col-8 ml-3">
         <table class="table table-bordered">
                 <tr>
-                    <th class="table-success">氏名</th>
-                    <th><%= @customer.last_name %><%= @customer.first_name %></th>
+                    <td class="table-success">氏名</td>
+                    <td width="75%"><%= @customer.last_name %>&nbsp;<%= @customer.first_name %></td>
                 </tr>
                 <tr>
                     <td class="table-success">カナ</td>
-                    <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+                    <td width="75%"><%= @customer.last_name_kana %>&nbsp;<%= @customer.first_name_kana %></td>
                 </tr>
                 <tr>
                     <td class="table-success">郵便番号</td>
-                    <td><%= @customer.postal_code %></td>
+                    <td width="75%"><%= @customer.postal_code %></td>
                 </tr>
                 <tr>
                     <td class="table-success">住所</td>
-                    <td><%= @customer.address %></td>
+                    <td width="75%"><%= @customer.address %></td>
                 </tr>
                 <tr>
                     <td class="table-success">電話番号</td>
-                    <td><%= @customer.telephone_number %></td>
+                    <td width="75%"><%= @customer.telephone_number %></td>
                 </tr>
                 <tr>
                     <td class="table-success">メールアドレス</td>
-                    <td><%= @customer.email %></td>
+                    <td width="75%"><%= @customer.email %></td>
                 </tr>
         </table>
+     </div>
     </div>
-    <strong>配送先</strong>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "一覧を見る", addresses_path, class:"btn btn-success" %>
-    <strong>注文履歴</strong>&nbsp;&nbsp;&nbsp;&nbsp<%= link_to "一覧を見る", orders_path, class:"btn btn-success" %>
-<body>
 
+    <div class="row">
+        <div class="col-5 ml-4">
+            <table>
+                <tr>
+                    <td height="60"><strong>配送先</strong>&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                    <td><%= link_to "一覧を見る", addresses_path, class:"btn btn-success" %></td>
+                <tr>
 
+                <tr>
+                    <td><strong>注文履歴</strong>&nbsp;&nbsp;&nbsp;&nbsp</td>
+                    <td height="60"><%= link_to "一覧を見る", orders_path, class:"btn btn-success" %></td>
+                </tr>
+            </table>
+        </div>
+     </div>
+
+</div>
