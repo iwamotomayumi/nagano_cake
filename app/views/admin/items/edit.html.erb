@@ -3,48 +3,56 @@
 <div>
 <br>
 <div class="container">
+
   <div class="row">
-    <div class="px-3 mr-auto">
-       <h4>商品編集</h4>
+    <div class="col-1"></div>
+    <div class="col-2 text-center">
+      <h4 class="bg-warning">商品編集</h4>
+    </div>
+  </div>
 
+  <br>
 
+  <div class="row">
+    <div class="col-2"></div>
         <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
          <table>
           <tr>
-          <td>商品画像</td>
-          <td><%= f.file_field :image, accept: "image/*" %></td>
-        </tr>
+            <td height="40" style="font-size:15px">商品画像</td>
+            <td style="font-size:15px"><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
 
-        <tr>
-          <td>商品名</td>
-          <td><%= f.text_field :name %></td>
-        </tr>
+          <tr>
+            <td height="40" style="font-size:15px">商品名</td>
+            <td style="font-size:15px"><%= f.text_field :name, :size=>"35" %></td>
+          </tr>
 
-        <tr>
-          <td>商品説明</td>
-          <td><%= f.text_area :introduction %></td>
-        </tr>
+          <tr>
+            <td height="40" class="d-flex align-items-start" style="font-size:15px">商品説明</td>
+            <td style="font-size:15px"><%= f.text_area :introduction, :size=>"35x7" %></td>
+          </tr>
 
-        <tr>
-          <td>ジャンル</td>
-          <td><%= f.collection_select(:genre_id, @genres, :id, :name) %></td>
-        </tr>
+          <tr>
+            <td height="40" style="font-size:15px">ジャンル</td>
+            <td style="font-size:15px"><%= f.collection_select(:genre_id, @genres, :id, :name)%></td>
+          </tr>
 
-        <tr>
-          <td>税抜価格</td>
-          <td><%= f.text_field :price %>円</td>
-        </tr>
+          <tr>
+            <td height="40" style="font-size:15px">税抜価格</td>
+            <td style="font-size:15px"><%= f.text_field :price, :size=>"35" %>円</td>
+          </tr>
 
-        <tr>
-          <td>販売ステータス</td>
-          <td><%= f.radio_button :is_active, true %>販売中
+          <tr>
+            <td height="40" style="font-size:15px">販売ステータス</td>
+            <td style="font-size:20px"><%= f.radio_button :is_active, true %>販売中
               <%= f.radio_button :is_active, false %>販売停止中</td>
-        </tr>
+          </tr>
 
-        <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+          <td></td>
+          <td class="text-center"><%= f.submit "変更を保存", class:"btn btn-success" %></td>
 
-      </table>
-      <% end %>
-    </div>
+        </table>
+       <% end %>
+
   </div>
 </div>

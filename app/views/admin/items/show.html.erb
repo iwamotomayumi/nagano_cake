@@ -2,20 +2,27 @@
   <%= flash[:notice] %>
 </div>
 <br>
+
 <div class="container">
+
   <div class="row">
-    <div class="px-3 mr-auto">
+    <div class="col-1"></div>
+    <div class="col-2 text-center">
+      <h4 class="bg-warning">商品詳細</h4>
+    </div>
+  </div>
 
-    <h4>商品詳細</h4>
-      <br>
-    <div class="col-md-8 offset-md-1">
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag @item.image, size: "400x200" %>
+    </div>
 
-     <table class="table table-hover table-inverse">
-       <tr>
-         <td><%= image_tag @item.image, size: "450x250" %></td>
-      </tr>
+    <div class="col-md-5">
+
+     <table class="table table-borderless">
       <tr>
-        <td>商品名</td>
+        <td width="150">商品名</td>
         <td><%= @item.name %></td>
       </tr>
       <tr>
@@ -34,16 +41,23 @@
       </tr>
       <tr>
         <td>販売ステータス</td>
-        <td><% if @item.is_active == true %>
+        <td>
+            <strong><% if @item.is_active == true %>
               販売中
               <% else %>
               販売停止中
               <% end %>
+            </strong>
           </td>
       </tr>
     </table>
+   </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5"></div>
+    <div class="col-5">
       <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success" %>
     </div>
-   </div>
   </div>
 </div>

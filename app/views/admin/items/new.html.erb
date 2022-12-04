@@ -2,12 +2,18 @@
   <%= flash[:notice] %>
 <div>
 <br>
-<div class="container">
-  <div class="row">
-    <div class="px-3 mr-auto">
 
-    <h4>商品新規登録</h4>
-      <br>
+<div class="container">
+
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-2 text-center">
+      <h4 class="bg-warning">商品新規登録</h4>
+    </div>
+  </div>
+
+  <br>
+
       <h4>
         <% if @item.errors.any? %>
         <%= @item.errors.count %>errors prohibited this obj from being saved:
@@ -19,42 +25,47 @@
       </ul>
       <% end %>
 
-    <table>
+  <div class="row">
+    <div class="col-2"></div>
+
       <%= form_with model: @item, url: '/admin/items', method: :post do |f| %>
+       <table class="table table-borderless">
         <tr>
-          <td>商品画像</td>
-          <td><%= f.file_field :image, accept: "image/*" %></td>
+          <td style="font-size:15px">商品画像</td>
+          <td style="font-size:15px"><%= f.file_field :image, accept: "image/*" %></td>
         </tr>
 
         <tr>
-          <td>商品名</td>
-          <td><%= f.text_field :name, placeholder: "商品名" %></td>
+          <td style="font-size:15px">商品名</td>
+          <td style="font-size:15px"><%= f.text_field :name, placeholder: "商品名", :size=>"35" %></td>
         </tr>
 
         <tr>
-          <td>商品説明</td>
-          <td><%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %></td>
+          <td style="font-size:15px ">商品説明</td>
+          <td style="font-size:15px"><%= f.text_area :introduction, placeholder: "ここに説明文を記述します",:size=>"35x7" %></td>
         </tr>
 
         <tr>
-          <td>ジャンル</td>
-          <td><%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--選択してください--"}) %></td>
+          <td style="font-size:15px ">ジャンル</td>
+          <td style="font-size:15px"><%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--選択してください--"})%></td>
         </tr>
 
         <tr>
-          <td>税抜価格</td>
-          <td><%= f.text_field :price, placeholder: "1000"%>円</td>
+          <td style="font-size:15px ">税抜価格</td>
+          <td style="font-size:15px"><%= f.text_field :price, placeholder: "1000", :size=>"35"%>円</td>
         </tr>
 
         <tr>
-          <td>販売ステータス</td>
-          <td><%= f.radio_button :is_active, true %>販売中 <%= f.radio_button :is_active, false %>販売停止中</td>
+          <td style="font-size:15px ">販売ステータス</td>
+          <td style="font-size:20px"><%= f.radio_button :is_active, true %>販売中 &emsp; <%= f.radio_button :is_active, false %>販売停止中</td>
         </tr>
 
-        <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+        <td></td>
+        <td class="text-center"><%= f.submit "新規登録", class:"btn btn-success" %></td>
+      </table>
+    <% end %>
 
-      <% end %>
-    </table>
-   </div>
+
+
   </div>
 </div>

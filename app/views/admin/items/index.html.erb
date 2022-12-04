@@ -3,25 +3,37 @@
 <div>
 <br>
 <div class="container">
+
   <div class="row">
-    <div class="px-3 mr-auto">
 
-    <h4>商品一覧</h4>
-    <%= link_to new_admin_item_path do %>
-      <i class="fas fa-plus-circle"></i>
-    <% end %>
-      <br>
+    <div class="col-2 text-center ml-30">
+      <h4 class="bg-warning">商品一覧</h4>
+    </div>
+    <div class="col-9"></div>
+    <div class="col-1">
+      <%= link_to new_admin_item_path do %>
+        <i class="fas fa-plus-circle"></i>
+      <% end %>
+    </div>
+  </div>
 
-     <table class="table table-hover table-inverse">
-      <tr>
-        <th>商品ID</th><th>商品名</th><th>税抜価格</th><th>ジャンル</th><th>ステータス</th>
+  <br>
+
+  <div class="col-12">
+     <table class="table table-borderless">
+      <tr style="background:#dad7d7;">
+        <th width="100">商品ID</th>
+        <th width="500">商品名</th>
+        <th width="150">税抜価格</th>
+        <th width="500">ジャンル</th>
+        <th width="300">ステータス</th>
       </tr>
       <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
           <td><%= link_to item.name, admin_item_path(item.id) %></td>
           <td><%= item.price.to_s(:delimited) %></td>
-          <td><%= @genre.name %></td>
+          <td><%= item.genre.name %></td>
           <td><% if item.is_active == true %>
               販売中
               <% else %>
@@ -30,9 +42,15 @@
           </td>
          </tr>
         <% end %>
-      </table>
-
-      <%= paginate @items %>
-
-   </div>
+     </table>
   </div>
+
+
+  <div class= "row">
+    <div class="col-5"></div>
+    <div class= "col-2 text-center">
+      <%= paginate @items %>
+    </div>
+  </div>
+
+</div>
