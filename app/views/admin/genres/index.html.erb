@@ -3,11 +3,16 @@
 <div>
 <br>
 <div class="container">
-  <div class="row">
-    <div class="px-3 mr-auto">
 
-    <h4>ジャンル一覧・追加</h4>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3 text-center">
+      <h4 class="bg-warning">ジャンル一覧・追加</h4>
+    </div>
+  </div>
+
       <br>
+
       <h4>
         <% if @genre.errors.any? %>
         <%= @genre.errors.count %>errors prohibited this obj from being saved:
@@ -19,27 +24,30 @@
       </ul>
       <% end %>
 
-    <table>
-      <%= form_with model: @genre, url: '/admin/genres', method: :post do |f| %>
+
+    <%= form_with model: @genre, url: '/admin/genres', method: :post do |f| %>
+       <table>
         <tr>
-          <td>ジャンル名</td>
-          <td><%= f.text_field :name, placeholder: "ジャンル名" %></td>
-          <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+          <td width="200" style="font-size:15px">ジャンル名</td>
+          <td width="280" style="font-size:15px"><%= f.text_field :name, placeholder: "ジャンル名" %></td>
+          <td width="200" class="text-center"><%= f.submit "新規登録", class:"btn btn-success" %></td>
         </tr>
-      <% end %>
-    </table>
+      </table>
+    <% end %>
 
     <br>
-
+  <div class="col-5">
     <table class="table table-hover table-inverse">
-      <tr><th>ジャンル</th></tr>
+      <tr>
+        <th style="background:#dad7d7; font-size:15px">ジャンル</th>
+        <th style="background:#dad7d7;"></th>
+      </tr>
       <% @genres.each do |genre| %>
         <tr>
-          <td><%= genre.name %></td>
-          <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-success" %></td>
+          <td style="font-size:15px"><%= genre.name %></td>
+          <td style="font-size:15px"><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-success" %></td>
         </tr>
       <% end %>
     </table>
-   </div>
   </div>
 </div>

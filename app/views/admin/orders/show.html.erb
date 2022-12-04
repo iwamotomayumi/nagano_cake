@@ -1,83 +1,93 @@
-<div class="row" style="width:60%; margin:0 auto;">
+<br>
 
-<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文履歴詳細</h4>
+<div class="container">
+  <div class="row">
+  	<div class="col-1"></div>
+    <div class="col-2 text-center">
+      <h4 class="bg-warning">注文履歴詳細</h4>
+    </div>
+  </div>
 
+	<div class="container-fluid">
+	<div class="row">
 	<%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-	<table class="table table-border">
-		<tr>
-			<th>購入者</th>
-			<td><%= link_to  admin_order_path(@order.id) do %>
-			<%#ダメならこれに変更⇨ admin_customer_path(customer.id) %>
-					<%= @order.customer.last_name %>
-					<%= @order.customer.first_name %>
-					<% end %>
-			</td>
-		</tr>
-		<tr>
-	 		<th>注文日</th>
-	    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-		</tr>
-		<tr>
-			<th>配送先</th>
-			<td>〒<%= @order.postal_code %>
-				<%= @order.address %>
-				<br>
-				<%= @order.name %>
-			</td>
-		</tr>
-		<tr>
-			<th>支払方法</th>
-			<td><%= @order.payment_method_i18n %></td>
-		</tr>
-		<tr>
-			<th>注文ステータス</th>
-      <td><%= f.select :status, Order.statuses_i18n.invert %></td>
-      <td><%= f.submit '変更', class: "btn btn-primary" %></td>
-		</tr>
+		<table class="table table-borderless">
+			<tr>
+				<th>購入者</th>
+				<td><%= link_to  admin_order_path(@order.id) do %>
+						<%= @order.customer.last_name %>
+						<%= @order.customer.first_name %>
+						<% end %>
+				</td>
+			</tr>
+			<tr>
+	 			<th >注文日</th>
+	   	 <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+			</tr>
+			<tr>
+				<th>配送先</th>
+				<td>〒<%= @order.postal_code %>
+					<%= @order.address %>
+					<br>
+					<%= @order.name %>
+				</td>
+			</tr>
+			<tr>
+				<th>支払方法</th>
+				<td><%= @order.payment_method_i18n %></td>
+			</tr>
+			<tr>
+				<th>注文ステータス</th>
+    	  <td><%= f.select :status, Order.statuses_i18n.invert %>&nbsp;&nbsp;&nbsp;&nbsp;
+      			<%= f.submit '変更', class: "btn btn-primary" %></td>
+			</tr>
 		</table>
 	<% end %>
+	</div>
 
-	<table class="table table-bordered">
-		<tr style="background:#dad7d7;">
-			<th>商品名</th>
-			<th>単価(税込)</th>
-			<th>数量</th>
-			<th>小計</th>
-			<th>制作ステータス</th>
-			<th></th></th>
-		</tr>
+	<div class="row">
+		<div class="col-8">
+			<table class="table table-borderless">
+				<tr style="background:#dad7d7;">
+					<th width="350" style="font-size:13px">商品名</th>
+					<th width="200" style="font-size:13px">単価(税込)</th>
+					<th width="150" style="font-size:13px">数量</th>
+					<th width="150" style="font-size:13px">小計</th>
+					<th width="200" style="font-size:13px">制作ステータス</th>
+					<th width="100" style="font-size:13px"></th>
+				</tr>
 
-
-	  <% @order.order_details.each do |order_detail| %>
-		<tr>
-			<td><%= order_detail.item.name %></td>
-			<td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
-			<td><%= order_detail.amount %></td>
-			<td><%= order_detail.subtotal %></td>
-			<%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
-              <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %></td>
-              <%= f.hidden_field :order_detail_id, :value => order_detail.id %>
-              <td><%= f.submit '変更', class: "btn btn-primary" %></td>
-            <% end %>
-		</tr>
-      <% end %>
-	</table>
-
-
-	<table>
-		<tr>
-			<th>商品合計&nbsp;&nbsp;&nbsp;&nbsp;</th>
-			<td><%= @total.to_s(:delimited) %>円</td>
-		</tr>
-		<tr>
-			<th>送料&nbsp;&nbsp;&nbsp;&nbsp;</th>
-			<td><%= @order.shipping_cost.to_s(:delimited) %>円</td>
-		</tr>
-		<tr>
-			<th>請求金額合計&nbsp;&nbsp;&nbsp;&nbsp;</th>
-			<td><strong><%= @order.total_payment.to_s(:delimited) %>円</strong></td>
-		</tr>
-	</table>
-
+	   	<% @order.order_details.each do |order_detail| %>
+				<tr>
+					<td style="font-size:13px"><%= order_detail.item.name %></td>
+					<td style="font-size:13px"><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
+					<td style="font-size:13px"><%= order_detail.amount %></td>
+					<td style="font-size:13px"><%= order_detail.subtotal.to_s(:delimited) %></td>
+					<%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+      	     <td style="font-size:13px"><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %></td>
+      	        <%= f.hidden_field :order_detail_id, :value => order_detail.id %>
+            	<td style="font-size:13px"><%= f.submit '変更', class: "btn btn-primary" %></td>
+       		<% end %>
+				</tr>
+   		 <% end %>
+			</table>
+		</div>
+	<div class="col-1"></div>
+	<div class="col-3 d-flex align-items-end">
+		<table>
+			<tr>
+				<th>商品合計&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				<td><%= @total.to_s(:delimited) %>円</td>
+			</tr>
+			<tr>
+				<th>送料&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				<td><%= @order.shipping_cost.to_s(:delimited) %>円</td>
+			</tr>
+			<tr>
+				<th>請求金額合計&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				<td><strong><%= @order.total_payment.to_s(:delimited) %>円</strong></td>
+			</tr>
+		</table>
+	</div>
 </div>
 
