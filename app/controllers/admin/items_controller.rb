@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
     @genres = Genre.all
     if @item.save
       flash[:notice] = "新規登録しました"
-      redirect_to admin_items_path
+      redirect_to admin_item_path(@item.id)
     else
       flash[:notice] = "必要事項を入力して下さい"
       render :new
@@ -25,7 +25,7 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @genre = Genre.find(params[:id])
+    @genre = @item.genre
   end
 
   def edit
