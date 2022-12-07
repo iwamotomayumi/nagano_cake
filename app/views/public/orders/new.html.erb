@@ -55,7 +55,7 @@
               <%= f.radio_button :address_number, 1 %>
               <%= f.label :address_number_1, "登録済み住所から選択" %><br>
                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+              <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
             </span>
             <br>
           <!-- registered として current_customer.address.all で取得した id を送ります。
